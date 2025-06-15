@@ -128,18 +128,22 @@ function initializeScrollAnimations() {
 function initializeSmoothScrolling() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const target = document.querySelector(this.getAttribute('href'));
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        
+        if (href && href !== '#') {
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
-        });
+        }
     });
+});
+
 
     // Scroll indicator click handler
     const scrollIndicator = document.querySelector('.scroll-indicator');
