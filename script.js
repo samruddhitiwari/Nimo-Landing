@@ -36,12 +36,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize other features
     initializeScrollAnimations();
     initializeSmoothScrolling();
+    initializeModals();
     
     // Initialize feather icons
     if (typeof feather !== 'undefined') {
         feather.replace();
     }
 });
+
+// Modal functions
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Initialize modal functionality
+function initializeModals() {
+    // Close modal when clicking outside of modal content
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeModal(event.target.id);
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const openModal = document.querySelector('.modal.show');
+            if (openModal) {
+                closeModal(openModal.id);
+            }
+        }
+    });
+}
 
 
 
