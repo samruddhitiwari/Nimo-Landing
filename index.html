@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nimo - Real-World Connections, Reimagined</title>
+    <meta name="description" content="Nimo helps you know when your friends are physically nearby in real time to encourage spontaneous meetups. Privacy-first, battery-efficient, and cross-platform.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Supabase JS SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Real-World Connections, Reimagined</h1>
+                    <p class="hero-description">
+                        Know when your friends are nearby in real time. Nimo makes spontaneous meetups effortless with privacy-first location sharing that actually respects your battery life.
+                    </p>
+                    
+                    <!-- Waitlist Form -->
+                    <div class="waitlist-form">
+                        <form id="waitlist-form" class="form">
+                            <div class="form-fields">
+                                <div class="form-row">
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        placeholder="Your name"
+                                        required
+                                        class="form-input name-input"
+                                    />
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        placeholder="Your email"
+                                        required
+                                        class="form-input email-input"
+                                    />
+                                </div>
+                                <button type="submit" class="submit-btn" id="submit-btn">
+                                    <span class="btn-text">Join Waitlist</span>
+                                    <div class="btn-loader" id="btn-loader"></div>
+                                </button>
+                            </div>
+                            <div class="form-message" id="form-message"></div>
+                        </form>
+                        <p class="form-note">Free during early access • No spam, ever</p>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="app-interface">
+                                <div class="status-bar"></div>
+                                <div class="app-header">
+                                    <h3>Friends Nearby</h3>
+                                </div>
+                                <div class="friend-cards">
+                                    <div class="friend-card">
+                                        <div class="avatar coral"></div>
+                                        <div class="friend-info">
+                                            <span class="name">Sarah</span>
+                                            <span class="distance">150m away</span>
+                                        </div>
+                                        <div class="status-dot active"></div>
+                                    </div>
+                                    <div class="friend-card">
+                                        <div class="avatar teal"></div>
+                                        <div class="friend-info">
+                                            <span class="name">Alex</span>
+                                            <span class="distance">300m away</span>
+                                        </div>
+                                        <div class="status-dot active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i data-feather="chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Nimo Section -->
+    <section class="section what-is-nimo" id="what-is-nimo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What is Nimo?</h2>
+                <p class="section-subtitle">The smart way to stay connected with friends in the real world</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon coral-bg">
+                        <i data-feather="users"></i>
+                    </div>
+                    <h3>Real-Time Proximity</h3>
+                    <p>Get notified when friends are within your chosen distance (50m to 2km). Perfect for spontaneous coffee dates or study sessions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon teal-bg">
+                        <i data-feather="shield"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your exact location is never shared. Choose from Visible, Ghost, or Private modes to control your presence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon pink-bg">
+                        <i data-feather="battery"></i>
+                    </div>
+                    <h3>Battery Efficient</h3>
+                    <p>Smart algorithms and optimized location tracking ensure minimal battery drain while keeping you connected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section class="section problem-solution">
+        <div class="container">
+            <div class="problem-solution-grid">
+                <div class="problem-side">
+                    <h2 class="section-title">The Problem</h2>
+                    <div class="problem-list">
+                        <div class="problem-item">
+                            <i data-feather="x-circle"></i>
+                            <p>Missing friends by minutes at the same coffee shop</p>
+                        </div>
+                        <div class="problem-item">
+                            <i data-feather="x-circle"></i>
+                            <p>Overthinking whether to suggest meetups</p>
+                        </div>
+                        <div class="problem-item">
+                            <i data-feather="x-circle"></i>
+                            <p>Feeling disconnected despite being in the same city</p>
+                        </div>
+                        <div class="problem-item">
+                            <i data-feather="x-circle"></i>
+                            <p>Awkward "Where are you?" text conversations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="solution-side">
+                    <h2 class="section-title">The Solution</h2>
+                    <div class="solution-list">
+                        <div class="solution-item">
+                            <i data-feather="check-circle"></i>
+                            <p>Automatic notifications when friends are nearby</p>
+                        </div>
+                        <div class="solution-item">
+                            <i data-feather="check-circle"></i>
+                            <p>Effortless spontaneous meetups</p>
+                        </div>
+                        <div class="solution-item">
+                            <i data-feather="check-circle"></i>
+                            <p>Stronger real-world friendships</p>
+                        </div>
+                        <div class="solution-item">
+                            <i data-feather="check-circle"></i>
+                            <p>Privacy-respectful location sharing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Nimo Section -->
+    <section class="section why-nimo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Nimo Over Alternatives?</h2>
+                <p class="section-subtitle">Built specifically for friendship, not surveillance</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h3>vs Find My</h3>
+                    <ul class="comparison-list">
+                        <li><i data-feather="check"></i> Designed for friends, not family tracking</li>
+                        <li><i data-feather="check"></i> Proximity alerts, not exact locations</li>
+                        <li><i data-feather="check"></i> Better privacy controls</li>
+                        <li><i data-feather="check"></i> Cross-platform (Android + iOS)</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card">
+                    <h3>vs Zenly/Snapchat</h3>
+                    <ul class="comparison-list">
+                        <li><i data-feather="check"></i> No social pressure or streaks</li>
+                        <li><i data-feather="check"></i> Battery-efficient algorithms</li>
+                        <li><i data-feather="check"></i> True privacy modes</li>
+                        <li><i data-feather="check"></i> Focus on real meetups, not digital</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card">
+                    <h3>vs Group Chats</h3>
+                    <ul class="comparison-list">
+                        <li><i data-feather="check"></i> No manual "I'm at..." messages</li>
+                        <li><i data-feather="check"></i> Automatic proximity detection</li>
+                        <li><i data-feather="check"></i> Reduces message overload</li>
+                        <li><i data-feather="check"></i> Contextual communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perfect for Every Situation</h2>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i data-feather="coffee"></i>
+                    </div>
+                    <h3>Campus Life</h3>
+                    <p>Get notified when study buddies are at the library or when friends are grabbing lunch at the same dining hall.</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i data-feather="map-pin"></i>
+                    </div>
+                    <h3>City Exploration</h3>
+                    <p>Discover when friends are in your neighborhood for impromptu dinners, shopping trips, or evening walks.</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i data-feather="briefcase"></i>
+                    </div>
+                    <h3>Work & Co-working</h3>
+                    <p>Connect with colleagues at nearby cafes or co-working spaces for casual coffee breaks and networking.</p>
+                </div>
+                
+                <div class="use-case-card">
+                    <div class="use-case-icon">
+                        <i data-feather="heart"></i>
+                    </div>
+                    <h3>Social Events</h3>
+                    <p>Find friends at festivals, conferences, or large gatherings without endless "Where are you?" texts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">Everything you need for effortless real-world connections</p>
+            </div>
+            
+            <div class="features-detailed">
+                <div class="feature-row">
+                    <div class="feature-content">
+                        <h3>Adjustable Proximity Alerts</h3>
+                        <p>Set custom distance ranges from 50m to 2km. Whether you want to know when friends are on the same block or in the same neighborhood, you're in control.</p>
+                        <ul class="feature-list">
+                            <li>50m - Same building/venue</li>
+                            <li>200m - Walking distance</li>
+                            <li>500m - Same area</li>
+                            <li>2km - Same neighborhood</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        <div class="proximity-circles">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                            <div class="center-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-row reverse">
+                    <div class="feature-content">
+                        <h3>Smart Privacy Modes</h3>
+                        <p>Your privacy, your choice. Switch between modes instantly based on your comfort level and situation.</p>
+                        <div class="privacy-modes">
+                            <div class="privacy-mode">
+                                <div class="mode-icon visible">
+                                    <i data-feather="eye"></i>
+                                </div>
+                                <div class="mode-info">
+                                    <h4>Visible</h4>
+                                    <p>Friends can see when you're nearby</p>
+                                </div>
+                            </div>
+                            <div class="privacy-mode">
+                                <div class="mode-icon ghost">
+                                    <i data-feather="user-x"></i>
+                                </div>
+                                <div class="mode-info">
+                                    <h4>Ghost</h4>
+                                    <p>You can see friends, but they can't see you</p>
+                                </div>
+                            </div>
+                            <div class="privacy-mode">
+                                <div class="mode-icon private">
+                                    <i data-feather="eye-off"></i>
+                                </div>
+                                <div class="mode-info">
+                                    <h4>Private</h4>
+                                    <p>Completely invisible to everyone</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-content">
+                        <h3>Additional Features</h3>
+                        <div class="features-grid-small">
+                            <div class="small-feature">
+                                <i data-feather="qr-code"></i>
+                                <h4>QR Code Invites</h4>
+                                <p>Easy friend adding with QR codes</p>
+                            </div>
+                            <div class="small-feature">
+                                <i data-feather="mic"></i>
+                                <h4>Push-to-Talk</h4>
+                                <p>Quick voice messages to nearby friends</p>
+                            </div>
+                            <div class="small-feature">
+                                <i data-feather="smartphone"></i>
+                                <h4>Cross-Platform</h4>
+                                <p>Works on both iOS and Android</p>
+                            </div>
+                            <div class="small-feature">
+                                <i data-feather="zap"></i>
+                                <h4>Smart Notifications</h4>
+                                <p>Contextual alerts that won't spam you</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="section coming-soon">
+        <div class="container">
+            <div class="coming-soon-content">
+                <h2 class="section-title">Coming Soon</h2>
+                <div class="launch-info">
+                    <div class="launch-item">
+                        <h3>Early Access</h3>
+                        <p>Free during beta testing</p>
+                        <span class="timeline">Q3 2025</span>
+                    </div>
+                    <div class="launch-item">
+                        <h3>iOS Launch</h3>
+                        <p>Available on App Store</p>
+                        <span class="timeline">Q4 2025</span>
+                    </div>
+                    <div class="launch-item">
+                        <h3>Android Launch</h3>
+                        <p>Available on Google Play</p>
+                        <span class="timeline">Q4 2025</span>
+                    </div>
+                </div>
+                
+                <div class="final-cta">
+                    <h3>Don't Miss Out</h3>
+                    <p>Join thousands already on the waitlist</p>
+                    <button class="cta-button" onclick="document.getElementById('hero').scrollIntoView({behavior: 'smooth'})">
+                        Join Waitlist Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Nimo</h3>
+                    <p>Real-world connections, reimagined</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <a href="#what-is-nimo">What is Nimo</a>
+                        <a href="#features">Features</a>
+                        <a href="#hero">Join Waitlist</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i data-feather="twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-feather="instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-feather="linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nimo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>
