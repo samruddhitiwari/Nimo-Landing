@@ -27,9 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
             message.style.color = 'red';
             console.error(error);
         } else {
-            message.textContent = 'You have been added to the waitlist!';
-            message.style.color = '#28a745';
-            form.reset();
+            // Redirect to thank you page
+            window.location.href = 'thank-you.html';
         }
     });
 
@@ -128,22 +127,18 @@ function initializeScrollAnimations() {
 function initializeSmoothScrolling() {
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        
-        if (href && href !== '#') {
-            const target = document.querySelector(href);
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
-        }
+        });
     });
-});
-
 
     // Scroll indicator click handler
     const scrollIndicator = document.querySelector('.scroll-indicator');
