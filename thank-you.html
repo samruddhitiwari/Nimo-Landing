@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Welcome to Nimo!</title>
+    <meta name="description" content="Thank you for joining the Nimo waitlist! You will find your Nimo soon.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Supabase JS SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="thank-you.css">
+</head>
+<body>
+    <!-- Party Popper Animation -->
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <!-- Main Content -->
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <!-- Success Message -->
+            <div class="success-section">
+                <div class="party-emoji">🎉</div>
+                <h1 class="thank-you-title">Thank You for Joining!</h1>
+                <p class="thank-you-message">
+                    You will find your Nimo soon!! Enjoy!! 🚀✨
+                </p>
+                <div class="emoji-row">
+                    <span>🎈</span>
+                    <span>🎊</span>
+                    <span>🎁</span>
+                    <span>🌟</span>
+                    <span>💫</span>
+                </div>
+            </div>
+            
+            <!-- Invite Friends Section -->
+            <div class="invite-section">
+                <h2 class="invite-title">Spread the Love! 💝</h2>
+                <p class="invite-subtitle">Invite your friends and family to join the Nimo waitlist</p>
+                
+                <form id="invite-form" class="invite-form">
+                    <div class="invite-fields">
+                        <div class="friend-inputs" id="friend-inputs">
+                            <div class="friend-input-group">
+                                <input type="text" placeholder="Friend's name" class="friend-name" required>
+                                <input type="email" placeholder="Friend's email" class="friend-email" required>
+                                <button type="button" class="remove-friend" onclick="removeFriendInput(this)" style="display: none;">
+                                    <i data-feather="x"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="add-friend-btn" class="add-friend-btn">
+                            <i data-feather="plus"></i>
+                            Add Another Friend
+                        </button>
+                        
+                        <button type="submit" class="invite-submit-btn" id="invite-submit-btn">
+                            <span class="btn-text">Send Invitations</span>
+                            <div class="btn-loader" id="invite-loader"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="invite-message" id="invite-message"></div>
+                </form>
+            </div>
+            
+            <!-- Back to Home -->
+            <div class="back-section">
+                <a href="index.html" class="back-home-btn">
+                    <i data-feather="home"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="thank-you.js"></script>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>
