@@ -151,7 +151,7 @@ async function handleInviteSubmission() {
                 const { error } = await supabase.from('WaitList').insert([{
                     name: friend.name,
                     email: friend.email,
-                    source: 'friend_invitation'
+                
                 }]);
                 
                 if (error && error.code !== '23505') { // Ignore duplicate email errors
